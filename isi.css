@@ -1,0 +1,1642 @@
+* {
+    margin: 0;
+    
+}
+
+body {
+    background-image: url("./img_pernikahan/bg.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-text-dark);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body::before {
+    content: "";
+    position: fixed;   /* penting: supaya penuh & ikut scroll */
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* atur tingkat gelap */
+    z-index: -1;       /* di belakang semua konten */
+    pointer-events: none;
+}
+
+/* =============================
+   GLOBAL SPARKLE ELEGAN
+   =============================*/
+.falling-leaves {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 5;
+}
+
+/* =============================
+   DAUN JATUH ELEGAN
+   =============================*/
+.leaf {
+    position: fixed;
+    width: 35px;
+    height: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    animation: leafFall linear infinite;
+}
+
+@keyframes leafFall {
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(110vh) rotate(200deg); }
+
+}
+/* DOOR ANIMATION */
+@keyframes doorOpen {
+    0% {
+        opacity: 0;
+        clip-path: inset(0 50% 0 50%);
+    }
+    100% {
+        opacity: 1;
+        clip-path: inset(0 0% 0 0%);
+    }
+}
+
+
+/* =============================
+   ANIMASI SCROLL FADE-IN ROMANTIS
+   =============================*/
+.fade-scroll {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: all 0.9s ease-out;
+}
+
+.fade-scroll.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================================================
+   ANIMASI DOOR OPEN WRAPPER
+===================================================== */
+
+/* Kondisi awal tersembunyi */
+.events-wrapper.hidden-init {
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    clip-path: inset(0 50% 0 50%);
+}
+
+/* Saat pintu terbuka */
+.events-wrapper.door-open {
+    animation: doorOpen 1.5s forwards ease-out;
+    position: relative;
+}
+
+/* Layout wrapper card */
+.events-wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+
+/* =====================================================
+   SECTION EVENT — Airy Watercolor Theme
+===================================================== */
+
+.event-section {
+    position: relative;
+    padding: 120px 20px;
+    text-align: center;
+    border-top: none;
+    background: none; /* karena body sudah ada bg */
+
+    /* ROOT DI DALAM SECTION */
+    --color-bg-light: #f7fcfc;
+    --color-mint-water: #ada3ff;
+    --color-lilac-water: #f0b0c6;
+    --color-accent-blue: #6a9ac9;
+    --color-text-dark: #405d5d;
+    --shadow-water: rgba(106, 154, 201, 0.25);
+
+    font-family: 'Cormorant Garamond', serif !important;
+    letter-spacing: 0.2px;
+}
+
+/* Overlay lembut */
+.event-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    backdrop-filter: blur(1px);
+}
+
+/* Container Utama */
+.event-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Judul Section */
+.event-container h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5em;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: black 0 0 5px, rgba(106, 154, 201, 0.3) 1px 1px 8px;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+/* Divider */
+.divider {
+    width: 400px;
+    height: 1px;
+    background-color: var(--color-lilac-water);
+    margin: 20px auto 70px auto;
+    box-shadow: 0 0 5px var(--shadow-water);
+}
+
+/* =====================================================
+   EVENTS WRAPPER
+===================================================== */
+
+.events-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+/* =====================================================
+   EVENT CARD — Watercolor Style
+===================================================== */
+
+.event-card {
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    padding: 45px 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 15px 40px var(--shadow-water);
+
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover */
+.event-card:hover {
+    box-shadow: 0 20px 50px var(--shadow-water);
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Muncul animasi */
+.event-card.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Judul Card */
+.event-card h3 {
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 2.5em;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-top: 15px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* Text isi card */
+.event-card p {
+    font-family: 'Cormorant Garamond', serif;
+    color: #666;
+    line-height: 1.7;
+    font-size: 1.2em;
+    padding: 0 10px;
+    font-weight: 600px;
+    letter-spacing: 1px;
+}
+
+/* =====================================================
+   FOTO / IKON — Frame Mint/Lilac
+===================================================== */
+
+.icon-box {
+    margin-bottom: 25px;
+}
+
+.icon {
+    display: block;
+    width: 170px;
+    height: 170px;
+    margin: 0 auto;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+/* Card 1 (Akad / Jeffri) */
+.event-card.akad .icon {
+    border: var(--color-mint-water) 5px solid;
+}
+
+/* Card 2 (Resepsi / Lenny) */
+.event-card.resepsi .icon {
+    border: var(--color-lilac-water) 5px solid;
+}
+
+
+/* =====================================================
+   SECTION: HOLY MATRIMONY
+===================================================== */
+
+.holymatrimony-section {
+    padding: 80px 20px;
+    background-color: var(--color-bg);
+    text-align: center;
+}
+
+
+
+/* =====================================================
+   HOLY MATRIMONY CONTAINER (Card Style)
+===================================================== */
+
+.holymatrimony-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid rgba(199, 156, 142, 0.4);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.holymatrimony-container img {
+    width: 200px;
+    margin-bottom: 15px;
+}
+
+
+
+/* =====================================================
+   TITLE – HOLY MATRIMONY
+===================================================== */
+
+.holymatrimony-section .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: lighter;
+    font-size: 3.2em;
+    color: var(--color-secondary);
+
+    margin-bottom: 5px;
+    text-shadow: 
+        0 0 5px rgba(255, 255, 255, 0.8), 
+        1px 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.holymatrimony-section .divider {
+    width: 60px;
+    border: none;
+    border-top: 2px solid var(--color-primary);
+    margin: 10px auto 30px auto;
+}
+
+/* =====================================================
+   DETAIL ACARA
+===================================================== */
+
+.event-details {
+    line-height: 1.8;
+}
+
+/* Tanggal Acara */
+.event-details .event-date {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    margin-bottom: 5px;
+    margin-top: -30px;
+    letter-spacing: 1px;
+}
+
+/* Jam Acara */
+.event-details .event-time {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2em;
+    color: var(--color-text-dark);
+    margin-bottom: 25px;
+}
+
+/* Lokasi Acara */
+.event-details .event-location {
+    font-style: normal;
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Nama Lokasi */
+.event-details .location-name {
+    display: block;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: -20px;
+}
+
+
+
+/* =====================================================
+   TOMBOL GOOGLE MAPS (Water Drop Button)
+===================================================== */
+
+.btn-holymatrimony {
+    display: inline-block;
+    padding: 15px 35px;
+
+    background-color:#f0b0c6;
+    color: rgb(254, 254, 254);
+    text-shadow: #666 0 0 3px;
+    border: none;
+
+    text-decoration: none;
+    border-radius: 40px 10px 40px 10px;
+
+    font-weight: 600;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+
+    box-shadow: 0 6px 15px rgba(106, 154, 201, 0.4);
+    transition: all 0.35s ease-in-out;
+}
+
+.btn-holymatrimony:hover {
+    background-color: #6a9ac9;
+    color: white;
+    transform: scale(1.05);
+
+    border-radius: 10px 40px 10px 40px;
+    box-shadow: 0 8px 20px rgba(106, 154, 201, 0.6);
+}
+
+
+
+/* Definisikan Palet Klasik Elegan */
+:root {
+    --color-bg-linen: #f4f2e9;       /* Latar belakang Linen Pudar */
+    --color-forest-dark: #3a504d;    /* Hijau Hutan Gelap */
+    --color-copper-accent: #b87333;  /* Aksen Tembaga/Gold Tua */
+    --color-ivory: #ffffff;          /* Warna Papan Angka */
+    --shadow-deep: rgba(0, 0, 0, 0.4); /* Bayangan dalam */
+    
+    /* Mapping variabel: */
+    --color-primary: var(--color-copper-accent);
+    --color-secondary: var(--color-forest-dark);
+    --color-text-value: var(--color-forest-dark);
+}
+
+/* =====================================================
+   SECTION: SAVE THE DATE (COUNTDOWN) - CLASSIC STYLE
+===================================================== */
+
+
+.countdown-section {
+    padding: 130px 20px;
+    background-color: var(--color-bg-linen);
+    text-align: center;
+}
+
+.countdown-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 70px 50px;
+
+    background-color: var(--color-forest-dark);
+    border-radius: 6px;
+    border: 4px double var(--color-copper-accent);
+    box-shadow: 0 20px 50px var(--shadow-deep);
+
+    color: white;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.save-the-date-title {
+    flex-shrink: 0;
+    font-family: 'Great Vibes', cursive;
+    color: var(--color-copper-accent);
+    text-shadow: 2px 2px 5px rgba(0,0,0,.5);
+
+    white-space: nowrap;   /* ❗ kunci 1 baris */
+    display: inline-block; /* ❗ penting */
+}
+
+
+@media (max-width: 600px) {
+    .save-the-date-title {
+        font-size: clamp(2.2rem, 6vw, 5rem);  /* lebih kecil */
+        line-height: 1;
+        max-width: 100%;
+        overflow: visible;
+        letter-spacing: 0.5px;
+         white-space: nowrap;
+    }
+}
+
+
+/* TITLE & TARGET DATE */
+.countdown-section .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.7em;
+    color: var(--color-copper-accent); 
+    font-weight: 400; 
+    margin-bottom: 5px;
+    /* Efek ukiran/shadow pada teks */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+}
+
+.countdown-section .divider {
+    width: 150px;
+    border: none;
+    border-top: 2px solid var(--color-copper-accent); 
+    margin: 25px auto 40px auto;
+    /* Memberi sedikit glow tembaga */
+    filter: drop-shadow(0 0 5px var(--color-copper-accent)); 
+}
+
+.countdown-target {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--color-bg-linen); /* Kontras dengan latar belakang */
+    margin: 15px 0 70px 0; 
+    letter-spacing: 4px; 
+    text-transform: uppercase;
+}
+
+
+/* Definisikan Palet Klasik Elegan (Tidak Berubah) */
+:root {
+    --color-bg-linen: #f4f2e9;
+    --color-forest-dark: #3a504d;
+    --color-copper-accent: #b87333;
+    --color-ivory: #ffffff;
+    --shadow-deep: rgba(0, 0, 0, 0.4); 
+    
+    --color-primary: var(--color-copper-accent);
+    --color-secondary: var(--color-forest-dark);
+    --color-text-value: var(--color-forest-dark);
+}
+
+/* =====================================================
+   COUNTDOWN TIMER - FADE & ZOOM DISPLAY
+===================================================== */
+
+/* Wrapper (Kontainer umum, tidak ada 3D) */
+.timer-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+    flex-wrap: nowrap;
+}
+
+.timer-box {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ... (styling timer-box dan timer-label tetap sama) ... */
+
+.timer-label {
+    margin-top: 8px;        /* ⬅️ jangan 20px */
+    font-size: 16px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #fff;
+}
+
+
+
+/* Flip Container (SANGAT PENTING: Position relative) */
+.flip-card-container {
+    position: relative;
+    width: 100%;
+    height: 85px;              /* ⬅️ area angka FIX */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Kartu Angka (Tampilan Papan) */
+.flip-card {
+    transform: translateY(1px);
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+     font-size: 3.3rem;        /* ⬅️ NAIKKAN, ini penting */
+    font-weight: 700;
+    font-family: 'Cormorant Garamond', serif;
+     line-height: 1;            /* ⬅️ WAJIB */
+     /* Optical centering (SERING DIPAKAI DI UI PREMIUM) */
+    padding-top: 6px;
+    color: #000;
+ line-height: 1;                 /* ⬅️ WAJIB */
+    padding-top: 4px;               /* ⬅️ optical centering */
+    background-color: var(--color-ivory);
+    border-radius: 4px;
+    border: 4px double var(--color-copper-accent);
+
+    box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.2),
+        inset 0 0 10px rgba(0, 0, 0, 0.1);
+
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+
+/* Setengah Kartu Atas dan Bawah (Tetap digunakan untuk styling garis tengah) */
+.timer-value {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    line-height: 1;
+}
+
+/* Posisikan next card agar berada di atas current card saat fade */
+.next-card {
+    opacity: 0;
+    transform: scale(1.1); /* Sedikit diperbesar saat tersembunyi */
+    z-index: 2;
+}
+
+.current-card {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 3;
+}
+
+/* =====================================================
+   ANIMASI FADE & ZOOM (Dipicu oleh JS)
+===================================================== */
+
+/* Ketika JS menambahkan kelas 'do-fade' */
+.do-fade .current-card {
+    /* Kartu lama: Zoom out dan menghilang */
+    opacity: 0;
+    transform: scale(0.9); 
+}
+
+.do-fade .next-card {
+    /* Kartu baru: Zoom in ke ukuran normal dan muncul */
+    opacity: 1;
+    transform: scale(1);
+}
+/* =====================================================
+   SECTION 8 — RESERVASI (RSVP)
+===================================================== */
+
+.rsvp-section {
+    padding: 80px 20px;
+    background-color: var(--color-bg);
+    text-align: center;
+}
+
+
+
+/* =====================================================
+   CONTAINER (Card RSVP)
+===================================================== */
+
+.rsvp-container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: white;
+    border-radius: 12px;
+    border: 1px solid rgba(88, 121, 104, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+
+/* =====================================================
+   TEKS PENJELASAN
+===================================================== */
+
+.rsvp-note {
+    font-size: 0.9em;
+    color: #ffffff;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+
+
+/* Definisikan Palet Formal (Konsisten) */
+:root {
+    --color-paper-white: #ffffff;      
+    --color-forest-dark: #3a504d;      /* Warna Sampul (Hijau Hutan Gelap) */
+    --color-copper-accent: #b87333;    /* Aksen Tembaga/Gold Tua */
+    --color-text-dark: #333333;        
+    --color-line-separator: #e0e0e0;   
+    --shadow-deep: rgba(0, 0, 0, 0.5); /* Bayangan buku tebal */
+}
+
+/* =====================================================
+   SECTION: KONFIRMASI KEHADIRAN (RSVP) - BOOK COVER FINAL
+===================================================== */
+
+.rsvp-section {
+    padding: 100px 20px;
+    background-color: var(--color-bg-linen); 
+    text-align: center;
+}
+
+/* CONTAINER (Sampul Buku) */
+.rsvp-container {
+    position: relative;
+    max-width: 650px; 
+    margin: 0 auto;
+    
+    padding: 100px 60px 120px 60px; 
+    
+    background-color: var(--color-forest-dark); 
+    border-radius: 8px; 
+    
+    box-shadow: 0 15px 40px var(--shadow-deep); 
+    
+    border: 1px solid var(--color-copper-accent); /* Border Tembaga Tipis */
+    z-index: 1; 
+    
+    /* Penting: Tambahkan tekstur halus di latar belakang sampul */
+    /* Contoh: Bisa menggunakan background-image pattern kulit/kain halus di proyek sebenarnya */
+}
+
+/* 📕 ILUSI PUNGGUNG BUKU (SPINE) */
+.rsvp-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px; /* Tarik keluar sedikit dari tepi kiri */
+    height: 100%;
+    width: 20px;
+    background-color: #2b3a39; /* Warna sedikit lebih gelap dari sampul utama */
+    border-radius: 5px 0 0 5px; 
+    
+    /* Bayangan untuk ilusi ketebalan punggung buku */
+    box-shadow: 
+        5px 0 10px rgba(0, 0, 0, 0.4), /* Bayangan ke kanan */
+        inset 0 0 5px rgba(255, 255, 255, 0.2); /* Highlight di tepi */
+    
+    z-index: 0;
+}
+
+
+/* TITLE & HEADER */
+.rsvp-section .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4.5em;
+    color: var(--color-copper-accent); 
+    font-weight: 400; 
+    margin-bottom: 20px;
+    
+    /* KUNCI: EFEK EMBOSS/UKIRAN PADA TEKS JUDUL */
+    text-shadow: 
+        0 1px 1px rgba(0, 0, 0, 0.4), /* Bayangan gelap di bawah (depth) */
+        0 0 10px var(--color-copper-accent); /* Sedikit glow/kilau */
+}
+
+
+/* ... (Styling form-group, label, dan input tetap sama) ... */
+
+/* =====================================================
+   FORM ELEMENT (Hanya Garis Bawah)
+===================================================== */
+
+/* ... (Gaya form-group, label tetap sama) ... */
+
+/* Input/Select */
+.form-group input[type="text"], 
+.form-group select {
+    width: 80%; /* Dibuat sedikit lebih sempit agar tidak menyentuh tepi sampul */
+    padding: 12px 0; /* Mengubah padding vertikal agar teks sejajar dengan garis */
+    
+    /* === PERUBAHAN UTAMA DI SINI === */
+    border: none; /* Hapus semua border default */
+    border-bottom: 1px solid rgb(179, 179, 179); /* Garis bawah tipis warna putih */
+    background-color: transparent; /* Hapus latar belakang transparan/kotak */
+    /* === AKHIR PERUBAHAN UTAMA === */
+
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-paper-white);
+    text-align: center; /* Teks input di tengah */
+    border-radius: 0; /* Sudut dihapus */
+    margin-bottom: 15px;
+}
+
+/* Garis bawah akan menebal dan berubah warna saat di-fokus (diklik) */
+.form-group input[type="text"]:focus, 
+.form-group select:focus {
+    border-bottom: 2px solid var(--color-copper-accent); /* Garis bawah Tembaga yang lebih tebal saat fokus */
+    outline: none;
+    background-color: transparent; /* Pastikan tetap transparan saat fokus */
+    color: var(--color-text-dark);
+}
+
+/* Button Kirim Reservasi */
+.btn-rsvp-send {
+    width: 60%; 
+    display: block;
+    margin: 50px auto 0 auto; 
+    padding: 18px 20px; 
+    
+    background-color: var(--color-copper-accent); 
+    color: var(--color-ivory); 
+    
+    border-radius: 20px; 
+    border: none;
+    
+    /* Bayangan bawah yang lebih gelap (seperti sampul) */
+    box-shadow: 0 4px 0 var(--color-forest-dark); 
+    
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+}
+
+.btn-rsvp-send:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 var(--color-forest-dark);
+}
+
+/* ... (Responsif tetap sama) ... */
+
+
+/* ==========================================================
+   SECTION OUR MOMENT
+========================================================== */
+.our-moment-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: var(--color-bg-linen);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.our-moment-section h2 {
+    font-size: 2.5em;
+    color: var(--text-dark, #4a4a4a);
+    margin-bottom: 50px;
+    font-family: 'Playfair Display', serif;
+}
+
+.our-moment-section h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: var(--highlight-rosegold, #d4a9a9);
+    margin-bottom: 5px;
+}
+
+/* ==========================================================
+   GRID LAYOUT
+========================================================== */
+.polaroid-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================
+   POLAROID ANIMATION (AMAN iOS)
+========================================================== */
+@keyframes polaroidSway {
+    0% {
+        transform: translate3d(0, 0, 0) rotate(var(--base-rotate));
+    }
+    50% {
+        transform: translate3d(0, -4px, 0)
+                   rotate(calc(var(--base-rotate) + 1.5deg));
+    }
+    100% {
+        transform: translate3d(0, 0, 0) rotate(var(--base-rotate));
+    }
+}
+
+/* ==========================================================
+   POLAROID ITEM
+========================================================== */
+.polaroid-item {
+    background-color: white;
+    padding: 10px 10px 30px;
+    border-radius: 2px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+
+    will-change: transform;
+    backface-visibility: hidden;
+
+    /* nilai default jika JS belum jalan */
+    --base-rotate: 0deg;
+
+}
+
+/* Hover desktop saja */
+.polaroid-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: scale(1.05);
+    z-index: 10;
+}
+
+/* ==========================================================
+   FOTO
+========================================================== */
+.photo {
+    width: 100%;
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center;
+    background-color: #eee;
+    border: 1px solid var(--border-soft, #eee);
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+@media (max-width: 768px) {
+    .polaroid-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .polaroid-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* ❗ JANGAN MATIKAN TRANSFORM */
+    .polaroid-item {
+        animation-duration: 6s; /* lebih lembut di HP */
+    }
+}
+
+
+/* ==========================================================
+   ROOT VARIABLES
+   ========================================================== */
+:root {
+  --envelope-color: #fbfbfb; /* Hijau Mint Pastel Sangat Lembut */
+  --flap-inner-color: #c2dad9; /* Bagian dalam sedikit lebih gelap */
+  --shadow-light: #d2e9ea; /* Bayangan terang */
+  --shadow-dark: rgba(164, 187, 219, 0.4); /* Bayangan gelap yang sangat lembut */
+  --accent-color: #26a69a; /* Warna Aksen (Mint Hijau) */
+  --text-dark: #37474f; /* Teks Biru Tua Lembut */
+  --text-soft: #78909c; 
+  --border-soft: rgba(0, 0, 0, 0.05);
+  --letter-bg: #ffffff;
+  --bank-item-bg: #f5f5f5;
+}
+.gift-section {
+    padding: 100px 20px;
+    background-color: var(--color-bg-linen); 
+    text-align: center;
+}
+.gift-section h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: var(--highlight-rosegold, #d4a9a9); 
+    font-weight: 400; 
+    margin-bottom: 5px;
+}
+/* ==========================================================
+  ENVELOPE (Fokus Neumorphism/Soft UI)
+  ========================================================== */
+.envelope {
+  width: 360px;
+  height: 260px;
+  background: var(--envelope-color);
+  border-radius: 20px; /* Sudut lebih lembut */
+  position: relative;
+  margin: 60px auto;
+  /* Soft Shadow: Menciptakan kesan mengambang */
+  box-shadow: 
+    10px 10px 30px var(--shadow-dark),
+    -10px -10px 30px var(--shadow-light); 
+  overflow: hidden;
+  transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transisi lebih lambat dan halus */
+}
+
+.envelope.open {
+    height: 600px;
+}
+
+/* ==========================================================
+  FLAP (TUTUP)
+  ========================================================== */
+  .flap-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+
+  
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.35));
+  z-index: 2;
+}
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130px;
+
+  background: linear-gradient(to bottom, #fff, #eaeaea);
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+
+  transform-origin: top;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 3;
+}
+/* SHADOW SEGITIGA */
+.envelope-flap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+
+  clip-path: inherit;
+
+  /* SHADOW YANG MENGIKUTI SEGITIGA */
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.25));
+
+  z-index: -1;
+}
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  box-shadow: none;
+}
+
+/* ==========================================================
+  BAGIAN BAWAH AMPL0P
+  ========================================================== */
+.envelope-luar {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 130px;
+  background: var(--flap-inner-color);
+  /* Soft Inner Shadow */
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.08); 
+  clip-path: polygon(0% 0%, 50% 100%, 100% 0%);
+  z-index: 1;
+}
+
+/* ==========================================================
+  WAX SEAL (DIGANTI: Snap Closure/Tombol Modern)
+  ========================================================== */
+.wax-seal {
+  width: 60px;
+  height: 60px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 800;
+  font-size: 15px;
+  letter-spacing: 1px;
+
+  /* Wax depth */
+  box-shadow:
+    inset 0 3px 5px rgba(255,255,255,0.6),
+    inset 0 -4px 6px rgba(0,0,0,0.35),
+    0 8px 16px rgba(38, 166, 154, 0.45);
+
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  overflow: visible;
+}
+
+/* Pinggir wax meleleh / retak */
+.wax-seal::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  background: inherit;
+  border-radius: 50%;
+  filter: none;      /* ❌ HAPUS BLUR */
+  opacity: 0.2; 
+  z-index: -1;
+
+  box-shadow:
+    2px 2px 0 rgba(0,0,0,0.15),
+    -2px -1px 0 rgba(255,255,255,0.15);
+}
+
+/* Emboss cap ditekan */
+.wax-seal::after {
+  content: '';
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  box-shadow:
+    inset 0 3px 4px rgba(0,0,0,0.45),
+    inset 0 -2px 3px rgba(255,255,255,0.25);
+  z-index: 1;
+}
+
+/* Teks / logo cap */
+.wax-seal span {
+  position: relative;
+  z-index: 2;
+  color: rgba(255,255,255,0.85);
+  text-shadow:
+    0 1px 1px rgba(0,0,0,0.6),
+    0 -1px 1px rgba(255,255,255,0.25);
+}
+
+/* Hover lembut */
+.wax-seal:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow:
+    inset 0 3px 5px rgba(255,255,255,0.6),
+    inset 0 -4px 6px rgba(0,0,0,0.35),
+    0 6px 10px rgba(0,0,0,0.3);
+}
+
+
+/* ==========================================================
+  LETTER
+  ========================================================== */
+.envelope-letter {
+  background: var(--letter-bg);
+  width: 80%;
+  min-height: 400px;
+  margin: auto;
+  margin-top: -340px;
+  padding: 30px;
+  border-radius: 16px; 
+  /* Bayangan lembut untuk surat */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.1),
+              0 0 0 1px var(--border-soft); 
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 2;
+}
+
+.envelope.open .envelope-letter {
+  opacity: 1;
+  transform: translateY(60px); 
+  margin-top: 70px;
+}
+
+/* ==========================================================
+   TEXT
+   ========================================================== */
+.gift-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+}
+
+.gift-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #6f6452;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================
+   BANK ITEM
+   ========================================================== */
+.bank-item {
+    display: flex;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 12px;
+    background: #f9f6ef;
+    margin-bottom: 14px;
+    border: 1px solid var(--border-soft);
+    align-items: center;
+}
+
+.bank-logo {
+    width: 46px;
+}
+
+.bank-info {
+    flex: 1;
+}
+
+.bank-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.account-name {
+    font-size: 12px;
+    color: #7a6f5a;
+    margin-bottom: 6px;
+}
+
+.account-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 8px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.btn-copy {
+    background: var(--seal-bg);
+    color: rgb(255, 255, 255);
+    border: none;
+    background:#6a9ac9;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-copy:hover {
+    background: #f0b0c6;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 480px) {
+    .envelope {
+        width: 90%;
+    }
+}
+
+/* ==========================================================
+   MUSIC PLAYER FIXED (GAYA VINYL DISC)
+   ========================================================== */
+
+.music-player-fixed {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 100;
+
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+    background: transparent;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* ==========================================================
+   PIRINGAN HITAM (VINYL)
+   ========================================================== */
+.vinyl-disc {
+    width: 100%;
+    height: 100%;
+    background: #111;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+
+    /* PENTING */
+    will-change: transform;
+    transform-origin: center;
+}
+
+
+/* Label Tengah */
+.vinyl-label {
+    width: 40%;
+    height: 40%;
+    background: #d4a9a9;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #eee;
+}
+
+/* ==========================================================
+   ANIMASI BERPUTAR
+   ========================================================== */
+@keyframes spin-vinyl {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.vinyl-disc.is-playing {
+    animation: spin-vinyl 2s linear infinite;
+}
+
+/* ==========================================================
+   PLAY / PAUSE INDICATOR
+   ========================================================== */
+.play-indicator {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #d4a9a9;
+    font-size: 1em;
+    z-index: 101;
+    transition: background 0.2s ease;
+}
+
+.play-indicator:hover {
+    background: #c28e8e;
+}
+
+.play-indicator i {
+    color: white;
+    transition: color 0.3s ease;
+}
+
+/* Penyesuaian ikon */
+.play-indicator i.fa-play {
+    font-size: 1.1em;
+    margin-left: 2px;
+}
+
+.play-indicator i.fa-pause {
+    font-size: 0.9em;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 480px) {
+    .music-player-fixed {
+        width: 50px;
+        height: 50px;
+        bottom: 15px;
+        right: 15px;
+    }
+
+    .play-indicator {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+/* ==========================================================
+   FOOTER STYLE
+   ========================================================== */
+.main-footer {
+    background-color: var(--envelope-color, #fcf8f0); /* Warna cream pucat */
+    padding: 40px 20px 20px 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-soft, rgba(0, 0, 0, 0.08));
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: auto;
+}
+
+.footer-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2em;
+    color: var(--highlight-rosegold, #d4a9a9);
+    margin-bottom: 10px;
+}
+
+.footer-subtitle {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-dark, #4a4a4a);
+    margin-bottom: 15px;
+}
+
+.footer-text, .signature {
+    font-size: 1em;
+    color: var(--text-soft, #7a7a7a);
+    line-height: 1.6;
+}
+
+.signature {
+    margin-top: 20px;
+    font-weight: 700;
+}
+
+.footer-divider {
+    border: none;
+    border-top: 1px solid var(--border-soft);
+    margin: 30px 0;
+}
+
+/* --- SOCIAL LINKS --- */
+.social-links {
+    margin-bottom: 30px;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--highlight-rosegold, #d4a9a9);
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.social-icon i {
+    font-size: 1.4em;
+    margin-right: 8px;
+    color: var(--seal-bg, #ab8e8e); /* Warna ikon lebih tegas */
+}
+
+.social-icon:hover {
+    color: var(--text-dark, #4a4a4a);
+}
+
+/* --- CREDIT --- */
+.website-credit p {
+    font-size: 0.8em;
+    color: #a0a0a0;
+}
+
+.credit-link {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.credit-link:hover {
+    color: var(--text-dark, #4a4a4a);
+}
+
+
+/* =====================================================
+   📱 RESPONSIVE — MOBILE (≤ 600px)
+===================================================== */
+@media (max-width: 600px) {
+
+    /* =======================
+       RSVP SECTION
+    ======================= */
+
+    .rsvp-section {
+        padding: 60px 15px;
+    }
+
+    .rsvp-container {
+        padding: 25px;
+        border-radius: 10px;
+    }
+
+    .section-title {
+        font-size: 1.6em;
+    }
+
+    .rsvp-note {
+        font-size: 0.85em;
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        font-size: 1em;
+        margin-bottom: 6px;
+        font-family: 'cormorant Garamond, serif';
+        letter-spacing: 1px;
+        color: var(--color-paper-white);
+    }
+
+    .rsvp-form input[type="text"],
+    .rsvp-form select {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .confirmation-group .radio-options {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-rsvp-send {
+        padding: 14px;
+        font-size: 1em;
+        margin-top: 15px;
+    }
+
+    .response-message {
+        font-size: 0.85em;
+        color: var(--color-paper-white);
+        margin-top: 15px;
+    }
+
+
+    /* =======================
+       GIFT SECTION
+    ======================= */
+
+    .gift-container {
+        padding: 25px 15px;
+    }
+
+    .btn-toggle-gift {
+        padding: 10px 20px;
+    }
+
+    .bank-logo {
+        width: 60px;
+    }
+
+    .account-number {
+        font-size: 1em;
+    }
+
+
+    /* =======================
+       COUNTDOWN TIMER
+    ======================= */
+     .timer-wrapper {
+     gap: clamp(8px, 2vw, 15px);
+    flex-wrap: nowrap;
+    }
+
+    .timer-box {
+        width: 90px;
+        height: 90px;
+    }
+
+    .flip-card-container {
+        height: 65px;
+    }
+
+    .flip-card {
+        font-size: 2.4rem;
+        padding-top: 4px;
+    }
+
+    .timer-label {
+        font-size: 13px;
+    }
+
+    .save-the-date-title {
+        font-size: 3.2rem;
+        line-height: 1.2;
+    }
+
+
+    /* =======================
+       HOLY MATRIMONY SECTION
+    ======================= */
+
+    .holymatrimony-container {
+        padding: 25px 15px;
+    }
+
+    .holymatrimony-section .section-title {
+        font-size: 2.5em;
+    }
+
+    .event-details .event-time {
+        font-size: 1.8em;
+    }
+
+
+    /* =======================
+       EVENT SECTION
+    ======================= */
+
+    .event-section {
+        padding: 50px 10px;
+    }
+
+    .event-container h2 {
+        font-size: 2.5em;
+    }
+
+    .events-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        width: 95%;
+        margin: 40px auto 0 auto;
+    }
+
+    .event-card {
+        padding: 20px 15px;
+    }
+
+    .event-card h3 {
+        font-size: 1.5em;
+    }
+
+    .event-date {
+        font-size: 1em;
+    }
+
+    .event-time {
+        font-size: 1.6em;
+    }
+
+    .event-location {
+        font-size: 0.9em;
+    }
+}
+
+
+
+
+
+
+/* =====================================================
+   📱 RESPONSIVE — EXTRA SMALL (≤ 380px)
+===================================================== */
+@media (max-width: 380px) {
+
+    /* RSVP */
+    .rsvp-container {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.4em;
+    }
+
+    .rsvp-note {
+        font-size: 0.8em;
+    }
+
+    .rsvp-form input[type="text"],
+    .rsvp-form select {
+        font-size: 0.95em;
+        padding: 10px;
+    }
+
+    .btn-rsvp-send {
+        font-size: 0.95em;
+        padding: 12px;
+    }
+}
+

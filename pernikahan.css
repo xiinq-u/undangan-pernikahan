@@ -1,0 +1,287 @@
+/* ================================
+   GLOBAL
+================================ */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--color-text-dark);
+    background-color: var(--color-bg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    overflow-x: hidden;
+    
+}
+
+/* ================================
+   SCENE
+================================ */
+.gambar-pemandangan {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ================================
+   BACKGROUND (DIKUNCI)
+================================ */
+.pemandangan,
+.pemandangan img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: none !important;
+}
+
+/* ================================
+   LAYER DEKOR (DIKUNCI)
+================================ */
+.layer-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.layer-background img {
+    position: absolute;
+    width: 350px;
+    height: auto;
+    opacity: 0.9;
+    transform: none !important;
+}
+
+/* ================================
+   LAYER UTAMA
+================================ */
+.layer-nama {
+    position: relative;
+    z-index: 5;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 2.5s ease, transform 1.5s ease;
+}
+
+.layer-nama.muncul {
+    opacity: 1; /* FIX */
+    transform: translateY(0);
+}
+
+/* ================================
+   CARD
+================================ */
+.card {
+    background: transparent;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* ================================
+   TEXT STYLE
+================================ */
+header h1 {
+    font-size: 80px;
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+    color: white;
+    margin-bottom: 15px;
+    text-shadow: 1.9px 0.9px 1px rgb(0, 0, 0);
+    letter-spacing: 1px;
+    animation: swaySoft 6s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+.names h2 {
+    font-size: 80px;
+    margin: 10px 0;
+    font-weight: lighter;
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    line-height: 1.1;
+    animation: swaySoft 7s ease-in-out infinite;
+    transform-origin: center bottom;
+
+}
+
+.and {
+    font-size: 30px;
+    display: block;
+    color: #b69e8b;
+    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    margin: 10px 0; /* FIX TOTAL */
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    animation: swaySoft 5s ease-in-out infinite;
+    transform-origin: center center;
+}
+
+.date {
+    font-size: 1.1em;
+    margin-top: 20px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow: 1.9px 1.5px 3px rgb(0, 0, 0);
+    margin-bottom: 25px;
+    animation: swaySoft 8s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+/* ================================
+   FOOTER & BUTTON
+================================ */
+footer p {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #ffffff;
+    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    animation: swaySoft 8s ease-in-out infinite;
+    transform-origin: center bottom;
+}
+
+.btn-rsvp {
+    text-decoration: none;
+    background-color: #b69e8b;
+    padding: 8px 17px;
+    border-radius: 13px;
+    font-weight: bold;
+    color: white;
+    box-shadow: 1.9px 1.9px 2px rgba(0, 0, 0, 0.3);
+    text-shadow: 1.2px 1.2px 2px rgb(0, 0, 0);
+}
+
+.btn-rsvp:hover {
+    background-color: #466756;
+    border: 2px solid #b69e8b;
+}
+
+/* ================================
+   DESKTOP ONLY
+================================ */
+@media (min-width: 768px) {
+    body {
+        overflow: hidden;
+        height: 100vh;
+    }
+}
+
+/* ================================
+   MOBILE
+================================ */
+@media (max-width: 600px) {
+
+    body {
+        overflow-y: auto;
+        height: auto;
+    }
+
+    header h1 {
+        font-size: 55px;
+    }
+
+    .names h2 {
+        font-size: 45px;
+    }
+
+    .and {
+        font-size: 28px;
+        margin: -5px 0 5px 0;
+    }
+
+    .date {
+        font-size: 0.9em;
+    }
+}
+
+/* ================================
+   MODAL
+================================ */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: #f9f6f1;
+    padding: 25px 30px;
+    border-radius: 14px;
+    width: 85%;
+    max-width: 450px;
+    text-align: center;
+    transform: scale(0.85);
+    opacity: 0;
+    transition: 0.45s;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+/* TOMBOL CLOSE (X) */ .close { float: right; font-size: 25px; font-weight: bold; cursor: pointer; color: #444; }
+/* ================================
+   NEXT BUTTON
+================================ */
+.btn-next {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    background-color: var(--color-primary, #587968);
+    color: white;
+    font-weight: 700;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.btn-next:hover {
+    background-color: #466756;
+    transform: translateY(-1px);
+}
+
+/* ANIMASI */ @keyframes fadeIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+
+@keyframes swaySoft {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    25% {
+        transform: rotate(0.4deg) translateY(-2px);
+    }
+    50% {
+        transform: rotate(0deg) translateY(0);
+    }
+    75% {
+        transform: rotate(-0.4deg) translateY(2px);
+    }
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
+}
