@@ -198,11 +198,11 @@ function sendWA() {
         return;
     }
 
-    // Ganti domain ini dengan link undangan asli Anda
-    const baseLink = "https://wedding-jeffri-lenny.com"; 
+    // Link undangan GitHub Pages
+    const baseLink = "https://xiinq-u.github.io/undangan-pernikahan/index1.html";
     const inviteLink = `${baseLink}?to=${encodeURIComponent(name)}`;
 
-    // Ganti placeholder {nama} dan {link} secara otomatis
+    // Ganti placeholder
     msg = msg
         .replace("{nama}", name)
         .replace("{link}", inviteLink);
