@@ -376,3 +376,18 @@ document.addEventListener("visibilitychange", () => {
     if (!document.hidden) startPolaroidAnimation();
 });
 window.addEventListener("load", startPolaroidAnimation);
+
+
+const reels = document.querySelectorAll('.reel');
+let rotation = 0;
+
+function spinReels() {
+    rotation += 0.6;
+    reels.forEach(reel => {
+        reel.style.transform =
+            `translateY(-50%) rotate(${rotation}deg)`;
+    });
+    requestAnimationFrame(spinReels);
+}
+
+spinReels();

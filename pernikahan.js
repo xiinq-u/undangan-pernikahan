@@ -193,3 +193,17 @@ window.addEventListener('load', () => {
     animateWords();
     animateSentences();
 });
+
+/* =========================================================
+   AMBIL NAMA TAMU DARI URL PARAMETER
+========================================================= */
+(function () {
+    const params = new URLSearchParams(window.location.search);
+    let guest = params.get("to");
+
+    if (!guest) return;
+
+    guest = decodeURIComponent(guest).replace(/\+/g, " ");
+
+    document.getElementById("guestName").textContent = guest;
+})();

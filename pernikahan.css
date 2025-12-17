@@ -1,3 +1,17 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.layer-nama,
+header h1,
+.names h2,
+.and,
+.date {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
 /* ================================
    GLOBAL
 ================================ */
@@ -125,18 +139,23 @@ header h1 {
     transform-origin: center center;
 }
 
-.date {
-    font-size: 1.1em;
-    margin-top: 20px;
-    font-weight: 600;
+.guest-label {
+    font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #ffffff;
-    text-shadow: 1.9px 1.5px 3px rgb(0, 0, 0);
-    margin-bottom: 25px;
-    animation: swaySoft 8s ease-in-out infinite;
-    transform-origin: center bottom;
+    margin-bottom: 6px;
+    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
 }
+
+.guest-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+}
+
 
 /* ================================
    FOOTER & BUTTON
@@ -283,5 +302,122 @@ footer p {
     }
     100% {
         transform: rotate(0deg) translateY(0);
+    }
+}
+
+@media (min-width: 1024px) {
+    .gambar-pemandangan {
+        height: 100vh;
+    }
+
+    header h1,
+    .names h2 {
+        font-size: 80px;
+    }
+
+    .and {
+        font-size: 30px;
+    }
+
+    .date {
+        font-size: 1.1em;
+    }
+
+    footer p {
+        font-size: 20px;
+    }
+
+    .btn-next {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+@media (max-width: 1024px) and (min-width: 769px) {
+    header h1 {
+        font-size: 65px;
+    }
+
+    .names h2 {
+        font-size: 60px;
+    }
+
+    .and {
+        font-size: 28px;
+    }
+
+    .date {
+        font-size: 1em;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        overflow-y: auto;
+        height: auto;
+        background-attachment: scroll; /* FIX iOS */
+    }
+
+    .gambar-pemandangan {
+        height: 100svh; /* FIX viewport iOS */
+    }
+
+    .layer-nama {
+        padding: 0 16px;
+        text-align: center;
+    }
+
+    header h1 {
+        font-size: 52px;
+    }
+
+    .names h2 {
+        font-size: 44px;
+        line-height: 1.15;
+    }
+
+    .and {
+        font-size: 26px;
+        margin: 0;
+    }
+
+    .date {
+        font-size: 0.9em;
+        letter-spacing: 1.5px;
+    }
+
+    footer p {
+        font-size: 16px;
+    }
+
+    .btn-rsvp {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+
+    .btn-next {
+        position: fixed;
+        bottom: env(safe-area-inset-bottom, 14px);
+        right: env(safe-area-inset-right, 14px);
+        z-index: 20;
+    }
+}
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 46px;
+    }
+
+    .names h2 {
+        font-size: 38px;
+    }
+
+    .and {
+        font-size: 24px;
+    }
+
+    .date {
+        font-size: 0.85em;
+    }
+
+    footer p {
+        font-size: 15px;
     }
 }

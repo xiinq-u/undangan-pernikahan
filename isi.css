@@ -1,27 +1,47 @@
 * {
     margin: 0;
-    
+    padding: 0;
+    box-sizing: border-box;
 }
 
+html body {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background-color: var(--color-bg-linen); 
+}
+
+/* =========================
+   BACKGROUND LAYER (AMAN)
+========================= */
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background-color: var(--color-bg-linen); 
+}
+
+
+/* =========================
+   BODY CONTENT
+========================= */
 body {
-    background-image: url("./img_pernikahan/bg.jpg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
     font-family: 'Cormorant Garamond', serif;
     color: var(--color-text-dark);
-    overflow-x: hidden;
     scroll-behavior: smooth;
+    position: relative;
 }
 
-body::before {
-    content: "";
-    position: fixed;   /* penting: supaya penuh & ikut scroll */
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45); /* atur tingkat gelap */
-    z-index: -1;       /* di belakang semua konten */
-    pointer-events: none;
+/* =========================
+   MOBILE PORTRAIT (ANDROID & IOS)
+========================= */
+@media (max-width: 768px) and (orientation: portrait) {
+    .bg-layer {
+       background-color: var(--color-bg-linen); 
+        background-position: center top;
+    }
 }
+
 
 /* =============================
    GLOBAL SPARKLE ELEGAN
@@ -109,157 +129,139 @@ body::before {
 }
 
 
-/* =====================================================
-   SECTION EVENT — Airy Watercolor Theme
-===================================================== */
+/* --- Palet Warna dan Variabel --- */
+:root {
+    --color-paper-white: #ffffff;
+    --color-forest-dark: #3a504d; /* Warna Sampul (Hijau Hutan Gelap) */
+    --color-copper-accent: #b87333; /* Aksen Tembaga/Gold Tua */
+    --color-text-dark: #333333;
+    --color-line-separator: #e0e0e0;
+    --shadow-deep: rgba(0, 0, 0, 0.5);
+}
 
+/* --- Gaya Umum Bagian Acara --- */
 .event-section {
-    position: relative;
-    padding: 120px 20px;
+    padding: 60px 20px;
+    background-color: var(--color-bg); /* Latar belakang putih bersih */
+    font-family: 'Times New Roman', Times, serif; /* Font klasik/formal */
     text-align: center;
-    border-top: none;
-    background: none; /* karena body sudah ada bg */
-
-    /* ROOT DI DALAM SECTION */
-    --color-bg-light: #f7fcfc;
-    --color-mint-water: #ada3ff;
-    --color-lilac-water: #f0b0c6;
-    --color-accent-blue: #6a9ac9;
-    --color-text-dark: #405d5d;
-    --shadow-water: rgba(106, 154, 201, 0.25);
-
-    font-family: 'Cormorant Garamond', serif !important;
-    letter-spacing: 0.2px;
 }
 
-/* Overlay lembut */
-.event-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    backdrop-filter: blur(1px);
-}
-
-/* Container Utama */
 .event-container {
     max-width: 1000px;
     margin: 0 auto;
-    position: relative;
-    z-index: 2;
 }
 
-/* Judul Section */
-.event-container h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 5em;
-    font-weight: 400;
-    color: #ffffff;
-    text-shadow: black 0 0 5px, rgba(106, 154, 201, 0.3) 1px 1px 8px;
-    margin-bottom: 5px;
+/* --- Judul Bagian --- */
+.section-title {
+    font-size: 2.5em;
+    color: #c28e8e; /* Judul menggunakan warna gelap yang elegan */
+    margin-bottom: 10px;
+    font-weight: 400; /* Lebih halus, tidak terlalu tebal */
     letter-spacing: 2px;
+    font-family:'Great Vibes', cursive;
 }
 
-/* Divider */
+/* --- Garis Pemisah (Divider) --- */
 .divider {
-    width: 400px;
-    height: 1px;
-    background-color: var(--color-lilac-water);
-    margin: 20px auto 70px auto;
-    box-shadow: 0 0 5px var(--shadow-water);
+    width: 80px;
+    height: 2px;
+    background-color: var(--color-copper-accent); /* Garis aksen Tembaga */
+    border: none;
+    margin: 10px auto 40px auto;
+    opacity: 0.8;
 }
 
-/* =====================================================
-   EVENTS WRAPPER
-===================================================== */
-
+/* --- Wrapper Kartu Acara --- */
 .events-wrapper {
     display: flex;
+    flex-direction: row; /* Tampilan berdampingan untuk desktop */
     justify-content: center;
     gap: 40px;
-    flex-wrap: wrap;
+    padding-top: 20px;
 }
 
-/* =====================================================
-   EVENT CARD — Watercolor Style
-===================================================== */
-
+/* --- Kartu Acara (Mempelai) --- */
 .event-card {
-    flex: 1;
-    min-width: 320px;
-    max-width: 450px;
-    padding: 45px 30px;
-    border: none;
-    border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 15px 40px var(--shadow-water);
+    position: relative;
+    flex: 0 1 400px;
+    padding: 40px 30px;
+    background-color: var(--color-paper-white);
 
-    opacity: 0;
-    transform: scale(0.9);
-    transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* CLASSIC FRAME */
+    border: 4px double var(--color-copper-accent);
+
+    border-radius: 6px;
+
+    /* Kesan kertas undangan */
+    box-shadow:
+        inset 0 0 0 2px rgba(0, 0, 0, 0.03),
+        0 8px 18px rgba(0, 0, 0, 0.258);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
-/* Hover */
+
 .event-card:hover {
-    box-shadow: 0 20px 50px var(--shadow-water);
-    transform: translateY(-8px) scale(1.02);
+    /* Sentuhan keanggunan saat di-hover */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Muncul animasi */
-.event-card.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Judul Card */
-.event-card h3 {
-    font-family: 'Cormorant Garamond', serif !important;
-    font-size: 2.5em;
-    font-weight: 700;
-    color: var(--color-text-dark);
-    margin-top: 15px;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-/* Text isi card */
-.event-card p {
-    font-family: 'Cormorant Garamond', serif;
-    color: #666;
-    line-height: 1.7;
-    font-size: 1.2em;
-    padding: 0 10px;
-    font-weight: 600px;
-    letter-spacing: 1px;
-}
-
-/* =====================================================
-   FOTO / IKON — Frame Mint/Lilac
-===================================================== */
-
+/* --- Kotak Ikon/Foto --- */
 .icon-box {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .icon {
-    display: block;
-    width: 170px;
-    height: 170px;
-    margin: 0 auto;
+    width: 150px; /* Ukuran gambar yang sesuai */
+    height: 150px;
     object-fit: cover;
-    object-position: center;
     border-radius: 50%;
-    transition: all 0.5s ease;
+    border: 3px solid var(--color-copper-accent); /* Bingkai Tembaga pada foto */
+    padding: 5px;
 }
 
-/* Card 1 (Akad / Jeffri) */
-.event-card.akad .icon {
-    border: var(--color-mint-water) 5px solid;
+/* --- Nama Mempelai --- */
+.event-card h3 {
+    font-size: 1.8em;
+    color: var(--color-forest-dark); /* Nama menonjol dengan warna gelap */
+    margin: 15px 0 10px 0;
+    font-weight: 700;
 }
 
-/* Card 2 (Resepsi / Lenny) */
-.event-card.resepsi .icon {
-    border: var(--color-lilac-water) 5px solid;
+/* --- Keterangan Orang Tua --- */
+.event-card p {
+    font-size: 1em;
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+.event-card p {
+    /* Tambahkan spasi di bawah teks orang tua untuk kejelasan */
+    margin-bottom: 10px;
+}
+
+/* Keterangan Orang Tua (garis bawah) */
+.event-card p:nth-of-type(1) {
+    font-style: italic;
+    color: var(--color-text-dark);
+}
+
+
+/* --- Responsif Sederhana (untuk tampilan mobile) --- */
+@media (max-width: 768px) {
+    .events-wrapper {
+        flex-direction: column; /* Tumpuk ke bawah di perangkat kecil */
+        gap: 30px;
+    }
+
+    .event-card {
+        flex: auto;
+        padding: 20px;
+    }
 }
 
 
@@ -418,6 +420,147 @@ body::before {
     --color-primary: var(--color-copper-accent);
     --color-secondary: var(--color-forest-dark);
     --color-text-value: var(--color-forest-dark);
+}
+
+
+/* --- Container Utama --- */
+.tape-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px 20px;
+    background-color: var(--color-paper-linen);
+}
+
+/* --- Body Kaset --- */
+.cassette-body {
+    width: 320px;
+    height: 200px;
+    background-color: var(--color-forest-dark);
+    border-radius: 15px;
+    position: relative;
+   border: 4px double var(--color-copper-accent);
+    box-shadow: 0 15px 35px var(--shadow-deep);
+    overflow: hidden;
+}
+
+/* --- Roda Kaset (Animasi Berputar) --- */
+.wheel {
+    position: absolute;
+    top: 40px;
+    width: 70px;
+    height: 70px;
+    background: #1a1a1a;
+    border-radius: 50%;
+    border: 5px dashed var(--color-copper-accent); /* Garis putus-putus agar putaran terlihat */
+    animation: rotate-tape 4s linear infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.wheel.left { 
+    left: 30px;
+z-index: 9999;
+}
+.wheel.right { 
+    right: 30px;
+    z-index: 9999;
+}
+
+.wheel-inner {
+    width: 25px;
+    height: 25px;
+    background: #333;
+    border-radius: 50%;
+    border: 2px solid #555;
+}
+
+/* --- Label Kaset --- */
+.cassette-label {
+    position: absolute;
+    top: 45px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 65px;
+    background-color: #fdf5e6; /* Warna kertas kuno */
+    border-radius: 5px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 2.5px var(--color-copper-accent) solid;
+}
+
+.label-text {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--color-forest-dark);
+    letter-spacing: 2px;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.names {
+    font-family: 'Times New Roman', serif;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* --- Tombol YouTube di Dalam Kaset --- */
+.yt-tape-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #FF0000;
+    color: white !important;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    position: absolute;
+    bottom: -40px;
+}
+
+.yt-tape-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+.yt-tape-btn:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+/* --- Bagian Bawah Kaset --- */
+.cassette-bottom {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hole {
+    width: 12px;
+    height: 12px;
+    background: #1a1a1a;
+    border-radius: 50%;
+}
+
+/* --- Keyframes Animasi --- */
+@keyframes rotate-tape {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 /* =====================================================
@@ -1156,36 +1299,61 @@ body::before {
     0 6px 10px rgba(0,0,0,0.3);
 }
 
-
 /* ==========================================================
-  LETTER
-  ========================================================== */
+   LETTER (RESPONSIVE & AMAN MOBILE)
+========================================================== */
 .envelope-letter {
-  background: var(--letter-bg);
-  width: 80%;
-  min-height: 400px;
-  margin: auto;
-  margin-top: -340px;
-  padding: 30px;
-  border-radius: 16px; 
-  /* Bayangan lembut untuk surat */
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1),
-              0 0 0 1px var(--border-soft); 
-  opacity: 0;
-  transform: translateY(-30px);
-  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 2;
+    background: var(--letter-bg);
+    width: min(90%, 760px);
+    min-height: 400px;
+
+    margin: auto;
+    margin-top: -340px;
+    padding: 30px;
+
+    border-radius: 16px;
+    box-shadow: 
+        0 15px 35px rgba(0,0,0,0.1),
+        0 0 0 1px var(--border-soft);
+
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
+    position: relative;
+    z-index: 2;
 }
 
 .envelope.open .envelope-letter {
-  opacity: 1;
-  transform: translateY(60px); 
-  margin-top: 70px;
+    opacity: 1;
+    transform: translateY(60px);
+    margin-top: 70px;
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+    .envelope-letter {
+        width: 92%;
+        padding: 22px;
+        margin-top: -280px;
+    }
+
+    .envelope.open .envelope-letter {
+        transform: translateY(40px);
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .envelope-letter {
+        padding: 18px;
+        border-radius: 14px;
+    }
 }
 
 /* ==========================================================
    TEXT
-   ========================================================== */
+========================================================== */
 .gift-title {
     text-align: center;
     font-size: 18px;
@@ -1202,9 +1370,20 @@ body::before {
     margin-bottom: 20px;
 }
 
+/* ================= MOBILE TEXT ================= */
+@media (max-width: 480px) {
+    .gift-title {
+        font-size: 16px;
+    }
+
+    .gift-text {
+        font-size: 13px;
+    }
+}
+
 /* ==========================================================
    BANK ITEM
-   ========================================================== */
+========================================================== */
 .bank-item {
     display: flex;
     gap: 12px;
@@ -1218,10 +1397,12 @@ body::before {
 
 .bank-logo {
     width: 46px;
+    flex-shrink: 0;
 }
 
 .bank-info {
     flex: 1;
+    min-width: 0;
 }
 
 .bank-name {
@@ -1236,29 +1417,59 @@ body::before {
     margin-bottom: 6px;
 }
 
+/* ==========================================================
+   ACCOUNT BOX — TOMBOL TETAP DI KANAN
+========================================================== */
 .account-box {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: white;
+    justify-content: space-between;
+
+    gap: 10px;
+    background: #fff;
     padding: 8px 10px;
     border-radius: 8px;
+
     font-size: 13px;
 }
 
+.account-box span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* BUTTON SALIN */
 .btn-copy {
-    background: var(--seal-bg);
-    color: rgb(255, 255, 255);
+    flex-shrink: 0;          /* 🔥 KUNCI */
+    white-space: nowrap;
+
+    background: #6a9ac9;
+    color: #fff;
     border: none;
-    background:#6a9ac9;
+
     padding: 6px 12px;
     border-radius: 6px;
+
     font-size: 12px;
     cursor: pointer;
+    transition: background 0.25s ease;
 }
 
 .btn-copy:hover {
     background: #f0b0c6;
+}
+
+/* ================= EXTRA SMALL ================= */
+@media (max-width: 480px) {
+    .account-box {
+        font-size: 12px;
+    }
+
+    .btn-copy {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
 }
 
 /* ==========================================================
@@ -1373,22 +1584,25 @@ body::before {
     font-size: 0.9em;
 }
 
-/* ==========================================================
-   RESPONSIVE
-   ========================================================== */
 @media (max-width: 480px) {
     .music-player-fixed {
-        width: 50px;
-        height: 50px;
-        bottom: 15px;
-        right: 15px;
+        width: 48px;
+        height: 48px;
+        bottom: 16px;
+        right: 16px;
+
+        /* Aman dari notch & gesture bar iPhone */
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-right: env(safe-area-inset-right);
     }
 
     .play-indicator {
-        width: 25px;
-        height: 25px;
+        width: 24px;
+        height: 24px;
+        font-size: 0.8em;
     }
 }
+
 
 /* ==========================================================
    FOOTER STYLE
@@ -1538,26 +1752,122 @@ body::before {
         margin-top: 15px;
     }
 
-
     /* =======================
-       GIFT SECTION
-    ======================= */
+   FOOTER SECTION 
+======================= */
 
-    .gift-container {
-        padding: 25px 15px;
+/* ================= DESKTOP & TABLET ================= */
+@media (max-width: 1024px) {
+    .footer-content {
+        max-width: 680px;
     }
 
-    .btn-toggle-gift {
-        padding: 10px 20px;
+    .footer-title {
+        font-size: 1.8em;
     }
 
-    .bank-logo {
-        width: 60px;
+    .footer-subtitle {
+        font-size: 1.1em;
+    }
+}
+
+/* ================= MOBILE (IPHONE & ANDROID) ================= */
+@media (max-width: 768px) {
+    .main-footer {
+        padding: 35px 18px 18px;
     }
 
-    .account-number {
+    /* ACCOUNT BOX — TOMBOL TETAP DI KANAN */
+    .account-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+
+        max-width: 360px;
+        margin: 20px auto;
+
+        padding: 12px 16px;
+        border-radius: 8px;
+        background: #fff;
+    }
+
+    .account-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        flex: 1;
+        text-align: left;
+    }
+
+    .copy-btn {
+        flex-shrink: 0;          /* 🔥 KUNCI BIAR TIDAK TURUN */
+        white-space: nowrap;     /* 🔥 TEKS TIDAK PECAH */
+        padding: 8px 14px;
+        font-size: 0.85em;
+        border-radius: 20px;
+    }
+
+    .footer-title {
+        font-size: 1.6em;
+    }
+
+    .footer-subtitle {
+        font-size: 1.05em;
+    }
+
+    .footer-text,
+    .signature {
+        font-size: 0.95em;
+        line-height: 1.7;
+    }
+
+    .social-links {
+        margin-bottom: 25px;
+    }
+
+    .social-icon {
+        font-size: 0.95em;
+    }
+
+    .social-icon i {
+        font-size: 1.3em;
+    }
+}
+
+/* ================= EXTRA SMALL (HP KECIL) ================= */
+@media (max-width: 480px) {
+    .main-footer {
+        padding: 30px 15px 15px;
+    }
+
+    .account-box {
+        max-width: 100%;
+    }
+
+    .copy-btn {
+        font-size: 0.8em;
+        padding: 6px 12px;
+    }
+
+    .footer-title {
+        font-size: 1.4em;
+    }
+
+    .footer-subtitle {
         font-size: 1em;
     }
+
+    .footer-text,
+    .signature {
+        font-size: 0.9em;
+    }
+
+    .website-credit p {
+        font-size: 0.75em;
+    }
+}
+
 
 
     /* =======================
@@ -1684,3 +1994,133 @@ body::before {
     }
 }
 
+
+@media (max-width: 480px) {
+    .tape-container {
+        padding: 30px 10px;
+    }
+
+    .cassette-body {
+        transform: scale(0.85);
+        transform-origin: center;
+    }
+
+    .wheel {
+        top: 42px;
+        width: 60px;
+        height: 60px;
+         will-change: transform;
+    }
+
+    .wheel.left {
+        left: 22px;
+    }
+
+    .wheel.right {
+        right: 22px;
+    }
+
+    .wheel-inner {
+        width: 22px;
+        height: 22px;
+    }
+
+    .cassette-label {
+        top: 48px;
+        width: 190px;
+        height: 50px;
+        padding: 8px;
+    }
+
+    .label-text {
+        font-size: 9px;
+    }
+
+    .names {
+        font-size: 13px;
+        margin-bottom: 10px;
+    }
+
+    .yt-tape-btn {
+        bottom: -45px;
+        font-size: 10px;
+        padding: 5px 10px;
+    }
+
+    .cassette-bottom {
+        gap: 30px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .cassette-body {
+        transform: scale(0.92);
+        transform-origin: center;
+    }
+}
+@media (min-width: 1024px) {
+    .cassette-body {
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 480px) {
+    .music-player-fixed {
+        width: 48px;
+        height: 48px;
+
+        bottom: 16px;
+        right: 16px;
+
+        /* aman dari gesture bar iPhone */
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-right: env(safe-area-inset-right);
+    }
+
+    .vinyl-label {
+        width: 42%;
+        height: 42%;
+    }
+
+    .play-indicator {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .music-player-fixed {
+        width: 54px;
+        height: 54px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .play-indicator {
+        width: 26px;
+        height: 26px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .music-player-fixed {
+        width: 60px;
+        height: 60px;
+        bottom: 25px;
+        right: 25px;
+    }
+
+    .play-indicator {
+        width: 30px;
+        height: 30px;
+    }
+}
+/* =========================================
+   FIX SAFARI iOS (WAJIB DI PALING BAWAH)
+========================================= */
+.music-player-fixed,
+.vinyl-disc {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
