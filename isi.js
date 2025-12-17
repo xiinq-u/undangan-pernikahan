@@ -257,25 +257,31 @@ countdownInterval = setInterval(updateCountdown, 1000);
         
         // 2. Fungsi Copy (Tetap Sama)
         if (copyButtons.length > 0) {
-            copyButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const accountNumber = this.parentElement.querySelector('span').textContent; 
-                    
-                    navigator.clipboard.writeText(accountNumber)
-                        .then(() => {
-                            const originalText = this.textContent;
-                            this.textContent = 'Tersalin!';
-                            this.style.backgroundColor = '#5d7572'; // Feedback
-                            
-                            setTimeout(() => {
-                                this.textContent = originalText;
-                                this.style.backgroundColor = 'var(--main-color)'; 
-                            }, 1500);
-                        });
-                });
+    copyButtons.forEach(button => {
+
+        // fallback aman kalau data-text lupa ditulis
+        const originalText = button.dataset.text || 'Salin';
+
+        button.addEventListener('click', function () {
+            const span = this.parentElement.querySelector('span');
+            if (!span) return;
+
+            const accountNumber = span.textContent.trim();
+
+            navigator.clipboard.writeText(accountNumber).then(() => {
+                this.textContent = 'Tersalin!';
+                this.classList.add('copied');
+
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('copied');
+                }, 1500);
             });
-        }
+        });
     });
+}
+});
+
 /* =====================================================
    7. PEMUTAR MUSIK VINYL DENGAN AUTOPLAY & MANUAL PLAY/PAUSE
 ===================================================== */

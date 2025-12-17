@@ -1441,8 +1441,9 @@ z-index: 9999;
 
 /* BUTTON SALIN */
 .btn-copy {
-    flex-shrink: 0;          /* 🔥 KUNCI */
-    white-space: nowrap;
+    flex-shrink: 0;              /* 🔥 KUNCI flex */
+    white-space: nowrap;         /* 🔥 Teks tidak patah */
+    min-width: 78px;             /* 🔥 CEGAH HILANG */
 
     background: #6a9ac9;
     color: #fff;
@@ -1453,8 +1454,16 @@ z-index: 9999;
 
     font-size: 12px;
     cursor: pointer;
-    transition: background 0.25s ease;
+
+    text-align: center;
+    transition: background 0.25s ease, transform 0.15s ease;
 }
+
+/* STATE SETELAH DISALIN */
+.btn-copy.copied {
+    background-color: #5d7572;
+}
+
 
 .btn-copy:hover {
     background: #f0b0c6;
