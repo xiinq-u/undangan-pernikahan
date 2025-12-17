@@ -1416,6 +1416,12 @@ z-index: 9999;
     color: #7a6f5a;
     margin-bottom: 6px;
 }
+.account-number {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-decoration: none;
+}
 
 /* ==========================================================
    ACCOUNT BOX — TOMBOL TETAP DI KANAN
