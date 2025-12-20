@@ -397,68 +397,38 @@ function spinReels() {
 }
 
 spinReels();
-/* ==========================================================
-   FIREBASE WISHES – SIMPAN & TAMPILKAN UCAPAN
-========================================================== */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  serverTimestamp,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-/* 🔥 GANTI DENGAN CONFIG FIREBASE KAMU */
-const firebaseConfig = {
-  apiKey: "ISI_API_KEY",
-  authDomain: "ISI_AUTH_DOMAIN",
-  projectId: "ISI_PROJECT_ID",
-  storageBucket: "ISI_STORAGE_BUCKET",
-  messagingSenderId: "ISI_SENDER_ID",
-  appId: "ISI_APP_ID"
-};
+const form = document.getElementById('wishForm');
+const list = document.getElementById('wishList');
 
-/* INIT */
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+function loadWishes() {
+    const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
+    list.innerHTML = '';
+    wishes.forEach(wish => {
+        const div = document.createElement('div');
+        div.className = 'wish-item';
+        div.innerHTML = `
+            <h4>${wish.name}</h4>
+            <span>${wish.email}</span>
+            <p>${wish.message}</p>
+        `;
+        list.prepend(div);
+    });
+}
 
-/* ELEMENT */
-const form = document.getElementById("wishForm");
-const list = document.getElementById("wishList");
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-/* REALTIME LOAD */
-const q = query(
-  collection(db, "wishes"),
-  orderBy("createdAt", "desc")
-);
+    const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
+    wishes.push({
+        name: name.value,
+        email: email.value,
+        message: message.value
+    });
 
-onSnapshot(q, (snapshot) => {
-  list.innerHTML = "";
-  snapshot.forEach((doc) => {
-    const data = doc.data();
-    list.innerHTML += `
-      <div class="wish-item">
-        <h4>${data.name}</h4>
-        <span>${data.email}</span>
-        <p>${data.message}</p>
-      </div>
-    `;
-  });
+    localStorage.setItem('wishes', JSON.stringify(wishes));
+    form.reset();
+    loadWishes();
 });
 
-/* SUBMIT */
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  await addDoc(collection(db, "wishes"), {
-    name: name.value,
-    email: email.value,
-    message: message.value,
-    createdAt: serverTimestamp()
-  });
-
-  form.reset();
-});
+loadWishes();
