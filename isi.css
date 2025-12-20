@@ -1005,18 +1005,12 @@ z-index: 9999;
     font-family: 'Cormorant Garamond', serif;
 }
 
-.our-moment-section h2 {
-    font-size: 2.5em;
-    color: var(--text-dark, #4a4a4a);
-    margin-bottom: 50px;
-    font-family: 'Playfair Display', serif;
-}
 
 .our-moment-section h3 {
     font-family: 'Great Vibes', cursive;
     font-size: 50px;
     color: var(--highlight-rosegold, #d4a9a9);
-    margin-bottom: 5px;
+    margin-bottom: 50px;
 }
 
 /* ==========================================================
@@ -1378,6 +1372,7 @@ z-index: 9999;
 
     .gift-text {
         font-size: 13px;
+        margin-top: 50px;
     }
 }
 
@@ -1495,6 +1490,191 @@ z-index: 9999;
         width: 90%;
     }
 }
+
+/* ==========================================================
+   SECTION WISHES / KOMENTAR
+   ========================================================== */
+.wishes-section {
+    max-width: 760px;
+    margin: 80px auto;
+    padding: 24px;
+    text-align: center;
+}
+
+.wishes-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: var(--highlight-rosegold, #d4a9a9); 
+    font-weight: 400; 
+    margin-bottom: 30px;
+
+}
+
+.wishes-subtitle {
+    font-size: 14px;
+    color: #6f6452;
+    margin-bottom: 24px;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* FORM */
+.wish-form {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.wish-form input,
+.wish-form textarea {
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-family: inherit;
+    font-size: 14px;
+}
+
+.wish-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.wish-form button {
+    background: #c6a87d;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* KOMENTAR */
+.wish-list {
+    display: grid;
+    gap: 16px;
+}
+
+.wish-item {
+    background: #fffaf3;
+    padding: 16px;
+    border-radius: 14px;
+    text-align: left;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.wish-item h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.wish-item span {
+    font-size: 12px;
+    color: #999;
+}
+
+.wish-item p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+    .wishes-title {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .wishes-section {
+        max-width: 90%;
+        margin: 70px auto;
+        padding: 22px;
+    }
+
+    .wishes-title {
+        font-size: 100px;
+        margin-bottom: 24px;
+    }
+
+    .wishes-subtitle {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .wishes-section {
+        max-width: 94%;
+        margin: 60px auto;
+        padding: 20px;
+    }
+
+    .wishes-title {
+        font-size: 100px;
+        margin-bottom: 22px;
+    }
+
+    .wishes-subtitle {
+        font-size: 13.5px;
+    }
+
+    .wish-form input,
+    .wish-form textarea {
+        font-size: 14px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wishes-section {
+        margin: 50px auto;
+        padding: 18px;
+          padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    }
+
+    .wishes-title {
+        font-size: 50px; /* tetap elegan, tidak kepotong */
+        margin-bottom: 18px;
+    }
+
+    .wishes-subtitle {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .wish-form {
+        gap: 10px;
+    }
+
+    .wish-form input,
+    .wish-form textarea {
+        font-size: 13.5px;
+        padding: 11px 12px;
+    }
+
+    .wish-form button {
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .wish-item {
+        padding: 14px;
+    }
+
+    .wish-item h4 {
+        font-size: 13.5px;
+    }
+
+    .wish-item p {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+}
+
+
 
 /* ==========================================================
    MUSIC PLAYER FIXED (GAYA VINYL DISC)

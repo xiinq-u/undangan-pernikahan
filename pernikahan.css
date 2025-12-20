@@ -25,48 +25,12 @@ body {
     background-attachment: fixed;
     background-position: center;
     overflow-x: hidden;
+    background-image: url('/img_pernikahan/Merah\ Marun\ &\ Coklat\ Krem\ Cantik\ Bunga\ Undangan\ Pernikahan\ Video\ Selular.png');
     
 }
 
-/* ================================
-   SCENE
-================================ */
-.gambar-pemandangan {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-}
 
-/* ================================
-   BACKGROUND (DIKUNCI)
-================================ */
-.pemandangan,
-.pemandangan img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transform: none !important;
-}
 
-/* ================================
-   LAYER DEKOR (DIKUNCI)
-================================ */
-.layer-background {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-}
-
-.layer-background img {
-    position: absolute;
-    width: 350px;
-    height: auto;
-    opacity: 0.9;
-    transform: none !important;
-}
 
 /* ================================
    LAYER UTAMA
@@ -106,9 +70,9 @@ header h1 {
     font-size: 80px;
     font-family: 'Great Vibes', cursive;
     font-weight: normal;
-    color: white;
+    color: #520e04;
     margin-bottom: 15px;
-    text-shadow: 1.9px 0.9px 1px rgb(0, 0, 0);
+    text-shadow: 1.5px 0.5px 1px rgb(0, 0, 0);
     letter-spacing: 1px;
     animation: swaySoft 6s ease-in-out infinite;
     transform-origin: center bottom;
@@ -118,9 +82,9 @@ header h1 {
     font-size: 80px;
     margin: 10px 0;
     font-weight: lighter;
-    color: white;
+    color: #520e04;
     font-family: 'Great Vibes', cursive;
-    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+   text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
     line-height: 1.1;
     animation: swaySoft 7s ease-in-out infinite;
     transform-origin: center bottom;
@@ -130,8 +94,8 @@ header h1 {
 .and {
     font-size: 30px;
     display: block;
-    color: #b69e8b;
-    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    color: #74665a;
+   text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
     margin: 10px 0; /* FIX TOTAL */
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -143,17 +107,17 @@ header h1 {
     font-size: 14px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #520e04;
     margin-bottom: 6px;
-    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    text-shadow: 1.1px 0.1px 1px rgb(0, 0, 0);
 }
 
 .guest-name {
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
-    color: #ffffff;
-    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    color: #520e04;
+    text-shadow: 1.1px 1px 3px rgba(0, 0, 0, 0.504);
 }
 
 
@@ -163,19 +127,19 @@ header h1 {
 footer p {
     margin-top: 30px;
     font-size: 20px;
-    color: #ffffff;
-    text-shadow: 1.9px 1px 3px rgb(0, 0, 0);
+    color: #520e04;
+    text-shadow: 1.1px 0.2px 3px rgb(0, 0, 0);
     animation: swaySoft 8s ease-in-out infinite;
     transform-origin: center bottom;
 }
 
 .btn-rsvp {
     text-decoration: none;
-    background-color: #b69e8b;
+    background-color: #b26d26;
     padding: 8px 17px;
     border-radius: 13px;
     font-weight: bold;
-    color: white;
+    color: #ffffff;
     box-shadow: 1.9px 1.9px 2px rgba(0, 0, 0, 0.3);
     text-shadow: 1.2px 1.2px 2px rgb(0, 0, 0);
 }
@@ -271,7 +235,7 @@ footer p {
     right: 10px;
     padding: 10px 20px;
     background-color: var(--color-primary, #587968);
-    color: white;
+    color: #ffffff;
     font-weight: 700;
     border-radius: 40px;
     border: none;
