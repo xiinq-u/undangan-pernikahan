@@ -1,63 +1,43 @@
+document.addEventListener("DOMContentLoaded", () => {
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  onSnapshot,
-  serverTimestamp,
-  query,
-  orderBy
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  const form = document.getElementById("wishForm");
+  const list = document.getElementById("wishList");
 
-const firebaseConfig = {
-  apiKey: "API_KEY_KAMU",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  projectId: "PROJECT_ID",
-  storageBucket: "PROJECT_ID.appspot.com",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
-};
+  if (!form || !list) {
+    console.warn("❌ wishForm / wishList tidak ditemukan");
+    return;
+  }
 
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const messageInput = document.getElementById("message");
 
-// ELEMENT
-const form = document.getElementById("wishForm");
-const list = document.getElementById("wishList");
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const messageInput = document.getElementById("message");
+  const q = query(collection(db, "wishes"), orderBy("createdAt", "desc"));
 
-// LOAD DATA REALTIME
-const q = query(collection(db, "wishes"), orderBy("createdAt", "desc"));
-
-onSnapshot(q, (snapshot) => {
-  list.innerHTML = "";
-  snapshot.forEach((doc) => {
-    const d = doc.data();
-    const div = document.createElement("div");
-    div.className = "wish-item";
-    div.innerHTML = `
-      <h4>${d.name}</h4>
-      <p>${d.message}</p>
-    `;
-    list.appendChild(div);
-  });
-});
-
-// SUBMIT
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  if (!nameInput.value || !messageInput.value) return;
-
-  await addDoc(collection(db, "wishes"), {
-    name: nameInput.value,
-    email: emailInput.value,
-    message: messageInput.value,
-    createdAt: serverTimestamp()
+  onSnapshot(q, (snapshot) => {
+    list.innerHTML = "";
+    snapshot.forEach((doc) => {
+      const d = doc.data();
+      list.innerHTML += `
+        <div class="wish-item">
+          <h4>${d.name}</h4>
+          <p>${d.message}</p>
+        </div>
+      `;
+    });
   });
 
-  form.reset();
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    await addDoc(collection(db, "wishes"), {
+      name: nameInput.value,
+      email: emailInput.value,
+      message: messageInput.value,
+      createdAt: serverTimestamp()
+    });
+
+    form.reset();
+  });
+
 });
