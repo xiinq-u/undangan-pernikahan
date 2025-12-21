@@ -1141,6 +1141,8 @@ z-index: 9999;
     -10px -10px 30px var(--shadow-light); 
   overflow: hidden;
   transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Transisi lebih lambat dan halus */
+   perspective: 1200px; /* 3D Perspective */
+  -webkit-perspective: 1200px; /* Safari */
 }
 
 .envelope.open {
@@ -1175,7 +1177,14 @@ z-index: 9999;
 
   transform-origin: top;
   transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 3;
+  z-index: 3; 
+  transform-style: preserve-3d; 
+  -webkit-transform-style: preserve-3d;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  will-change: transform;
 }
 /* SHADOW SEGITIGA */
 .envelope-flap::after {
@@ -1192,8 +1201,9 @@ z-index: 9999;
   z-index: -1;
 }
 .envelope.open .envelope-flap {
-  transform: rotateX(180deg);
   box-shadow: none;
+   transform: rotateX(180deg) translateZ(1px);
+  -webkit-transform: rotateX(180deg) translateZ(1px);
 }
 
 /* ==========================================================

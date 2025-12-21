@@ -25,7 +25,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     overflow-x: hidden;
-    background-image: url('/img_pernikahan/Merah\ Marun\ &\ Coklat\ Krem\ Cantik\ Bunga\ Undangan\ Pernikahan\ Video\ Selular.png');
+    background-image: url('/img_pernikahan/pdflower11batch5-ning-08f.jpg');
     
 }
 
@@ -104,12 +104,14 @@ header h1 {
 }
 
 .guest-label {
-    font-size: 14px;
+    font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #520e04;
     margin-bottom: 6px;
-    text-shadow: 1.1px 0.1px 1px rgb(0, 0, 0);
+    text-shadow: 1.1px 0.1px 1.1px rgb(0, 0, 0);
+    font-family:'monospace', sans-serif;
+    margin-top: 15px;
 }
 
 .guest-name {
@@ -127,8 +129,11 @@ header h1 {
 footer p {
     margin-top: 30px;
     font-size: 20px;
-    color: #520e04;
-    text-shadow: 1.1px 0.2px 3px rgb(0, 0, 0);
+    color: #5a1f14; /* coklat tua elegan */
+
+    text-shadow:
+        0 1px 2px rgba(0,0,0,0.55),   /* depth */
+        0 0 6px rgba(90,31,20,0.25); /* glow coklat */
     animation: swaySoft 8s ease-in-out infinite;
     transform-origin: center bottom;
 }
@@ -169,23 +174,49 @@ footer p {
         height: auto;
     }
 
-    header h1 {
-        font-size: 55px;
-    }
-
-    .names h2 {
-        font-size: 45px;
-    }
-
-    .and {
-        font-size: 28px;
-        margin: -5px 0 5px 0;
-    }
-
-    .date {
-        font-size: 0.9em;
-    }
 }
+
+/* ================================
+   FRAME BORDER TRANSPARAN ONLY
+================================ */
+.layer-nama::before {
+    content: "";
+    position: absolute;
+    inset: 20px;
+    border-radius: 32px;
+
+    /* Elegant gold border */
+    border: 3.2px solid transparent;
+    background:
+        linear-gradient(135deg,
+            #d4af37,
+            #c1b584,
+            #bfa46f,
+            #d6caa1
+        ) border-box;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) padding-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================================
+   CARD ADJUSTMENT
+================================ */
+.card {
+    background: transparent;
+    padding: 55px 30px;
+    max-width: 720px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
 
 /* ================================
    MODAL
@@ -270,9 +301,6 @@ footer p {
 }
 
 @media (min-width: 1024px) {
-    .gambar-pemandangan {
-        height: 100vh;
-    }
 
     header h1,
     .names h2 {
@@ -314,15 +342,6 @@ footer p {
     }
 }
 @media (max-width: 768px) {
-    body {
-        overflow-y: auto;
-        height: auto;
-        background-attachment: scroll; /* FIX iOS */
-    }
-
-    .gambar-pemandangan {
-        height: 100svh; /* FIX viewport iOS */
-    }
 
     .layer-nama {
         padding: 0 16px;

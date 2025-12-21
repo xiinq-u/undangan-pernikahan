@@ -286,52 +286,47 @@ countdownInterval = setInterval(updateCountdown, 1000);
    7. PEMUTAR MUSIK VINYL DENGAN AUTOPLAY & MANUAL PLAY/PAUSE
 ===================================================== */
 document.addEventListener("DOMContentLoaded", () => {   
-   const player = document.getElementById("vinylPlayer");
-    const disc = document.getElementById("vinylDisc");
-    const audio = document.getElementById("backgroundMusic");
-    const button = document.getElementById("customPlayButton");
+  const player = document.getElementById("vinylPlayer");
+  const disc = document.getElementById("vinylDisc");
+  const audio = document.getElementById("backgroundMusic");
+  const button = document.getElementById("customPlayButton");
 
-    let isPlaying = false;
+  let isPlaying = false;
+  const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-    /* ===============================
-       AUTOPLAY SAAT PAGE LOAD
-    =============================== */
-    function autoPlayMusic() {
-        audio.play().then(() => {
-            isPlaying = true;
-            disc.classList.add("is-playing");
-            button.innerHTML = '<i class="fa fa-pause"></i>';
-        }).catch(() => {
-            // Autoplay diblokir → tunggu interaksi user
-            isPlaying = false;
-            disc.classList.remove("is-playing");
-            button.innerHTML = '<i class="fa fa-play"></i>';
-        });
-    }
+  function playMusic() {
+    audio.play().then(() => {
+      isPlaying = true;
+      disc.classList.add("is-playing");
+      button.innerHTML = '<i class="fa fa-pause"></i>';
+    }).catch(() => {});
+  }
 
-    /* Jalankan autoplay */
-    autoPlayMusic();
+  function pauseMusic() {
+    audio.pause();
+    isPlaying = false;
+    disc.classList.remove("is-playing");
+    button.innerHTML = '<i class="fa fa-play"></i>';
+  }
 
-    /* ===============================
-       MANUAL PLAY / PAUSE
-    =============================== */
-    player.addEventListener("click", () => {
+  // ANDROID & DESKTOP → AUTOPLAY
+  if (!isIOS) {
+    playMusic();
+  }
 
-        if (!isPlaying) {
-            audio.play().then(() => {
-                isPlaying = true;
-                disc.classList.add("is-playing");
-                button.innerHTML = '<i class="fa fa-pause"></i>';
-            }).catch(() => {});
-        } else {
-            audio.pause();
-            isPlaying = false;
-            disc.classList.remove("is-playing");
-            button.innerHTML = '<i class="fa fa-play"></i>';
-        }
+  // iOS → PLAY SETELAH TAP PERTAMA DI HALAMAN
+  document.addEventListener("touchstart", () => {
+    if (!isPlaying) playMusic();
+  }, { once: true });
 
-    });
+  // MANUAL BUTTON
+  player.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (!isPlaying) playMusic();
+    else pauseMusic();
+  });
 });
+
 /* ==========================================================
    POLAROID FLOATING – VARIASI GERAK TIAP FOTO
    iOS SAFE
@@ -395,40 +390,3 @@ function spinReels() {
     });
     requestAnimationFrame(spinReels);
 }
-
-spinReels();
-
-const form = document.getElementById('wishForm');
-const list = document.getElementById('wishList');
-
-function loadWishes() {
-    const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
-    list.innerHTML = '';
-    wishes.forEach(wish => {
-        const div = document.createElement('div');
-        div.className = 'wish-item';
-        div.innerHTML = `
-            <h4>${wish.name}</h4>
-            <span>${wish.email}</span>
-            <p>${wish.message}</p>
-        `;
-        list.prepend(div);
-    });
-}
-
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const wishes = JSON.parse(localStorage.getItem('wishes')) || [];
-    wishes.push({
-        name: name.value,
-        email: email.value,
-        message: message.value
-    });
-
-    localStorage.setItem('wishes', JSON.stringify(wishes));
-    form.reset();
-    loadWishes();
-});
-
-loadWishes();
