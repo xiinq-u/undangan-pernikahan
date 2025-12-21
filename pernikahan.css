@@ -179,31 +179,7 @@ footer p {
 /* ================================
    FRAME BORDER TRANSPARAN ONLY
 ================================ */
-.layer-nama::before {
-    content: "";
-    position: absolute;
-    inset: 20px;
-    border-radius: 32px;
 
-    /* Elegant gold border */
-    border: 3.2px solid transparent;
-    background:
-        linear-gradient(135deg,
-            #d4af37,
-            #c1b584,
-            #bfa46f,
-            #d6caa1
-        ) border-box;
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    z-index: 1;
-    pointer-events: none;
-}
 
 /* ================================
    CARD ADJUSTMENT
