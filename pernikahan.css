@@ -25,7 +25,7 @@ body {
     background-attachment: fixed;
     background-position: center;
     overflow-x: hidden;
-    background-image: url('/img_pernikahan/flower.jpg');
+    background-image: url('/img_pernikahan/Merah\ Marun\ &\ Coklat\ Krem\ Cantik\ Bunga\ Undangan\ Pernikahan\ Video\ Selular\ \(1\).png');
     
 }
 
@@ -66,60 +66,86 @@ body {
 /* ================================
    TEXT STYLE
 ================================ */
+header {
+    position: relative;
+    width: 100%;
+    height: 10vh; /* full height layar */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* taruh semua elemen di atas */
+    align-items: center; /* tetap center horizontal */
+    padding-top: 2vh; /* jarak dari atas layar */
+}
+
+/* H1 */
 header h1 {
-    font-size: 80px;
-    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    font-family: 'Gaegu', cursive;
     font-weight: normal;
     color: #520e04;
-    margin-bottom: 15px;
+    margin-bottom: 1rem; /* jarak ke h2 */
     text-shadow: 1.5px 0.5px 1px rgb(0, 0, 0);
     letter-spacing: 1px;
     animation: swaySoft 6s ease-in-out infinite;
-    transform-origin: center bottom;
 }
 
+/* Names H2 */
 .names h2 {
     font-size: 80px;
-    margin: 10px 0;
+    margin: 0.5rem 0; /* jarak ke h1 */
     font-weight: lighter;
     color: #520e04;
     font-family: 'Great Vibes', cursive;
-   text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
+    text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
     line-height: 1.1;
     animation: swaySoft 7s ease-in-out infinite;
-    transform-origin: center bottom;
-
 }
 
+/* AND / tanggal */
 .and {
-    font-size: 30px;
+    font-size: 3vw;
     display: block;
     color: #74665a;
-   text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
-    margin: 10px 0; /* FIX TOTAL */
+    text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
+    margin: 0.3rem 0; /* jarak ke elemen atas */
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
     animation: swaySoft 5s ease-in-out infinite;
-    transform-origin: center center;
 }
 
-.guest-label {
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #520e04;
-    margin-bottom: 6px;
-    text-shadow: 1.1px 0.1px 1.1px rgb(0, 0, 0);
-    font-family:'monospace', sans-serif;
-    margin-top: 15px;
-}
-
+.guest-label,
 .guest-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px;
-    font-weight: 600;
     color: #520e04;
-    text-shadow: 1.1px 1px 3px rgba(0, 0, 0, 0.504);
+}
+
+/* Media query untuk mobile */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 7vw;
+        margin-bottom: 0.5rem;
+         position: absolute;
+        top: -200px;
+        left: 55px;
+    }
+    .names {
+         position: absolute;
+        top: -40px;
+        left: 55px;
+    }
+    .names h2 {
+        font-size: 12vw;
+        margin: 0.3rem 0;
+        
+    }
+    .guest-label {
+         position: absolute;
+        top: 130px;
+        left: 170px;
+    }
+    .and {
+        font-size: 5vw;
+        margin: 0.2rem 0;
+    }
 }
 
 
@@ -174,35 +200,6 @@ footer p {
         height: auto;
     }
 
-}
-
-/* ================================
-   FRAME BORDER TRANSPARAN ONLY
-================================ */
-.layer-nama::before {
-    content: "";
-    position: absolute;
-    inset: 20px;
-    border-radius: 32px;
-
-    /* Elegant gold border */
-    border: 3.2px solid transparent;
-    background:
-        linear-gradient(135deg,
-            #d4af37,
-            #c1b584,
-            #bfa46f,
-            #d6caa1
-        ) border-box;
-
-    -webkit-mask:
-        linear-gradient(#fff 0 0) padding-box,
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
-
-    z-index: 1;
-    pointer-events: none;
 }
 
 /* ================================
@@ -297,110 +294,5 @@ footer p {
     }
     100% {
         transform: rotate(0deg) translateY(0);
-    }
-}
-
-@media (min-width: 1024px) {
-
-    header h1,
-    .names h2 {
-        font-size: 80px;
-    }
-
-    .and {
-        font-size: 30px;
-    }
-
-    .date {
-        font-size: 1.1em;
-    }
-
-    footer p {
-        font-size: 20px;
-    }
-
-    .btn-next {
-        bottom: 20px;
-        right: 20px;
-    }
-}
-@media (max-width: 1024px) and (min-width: 769px) {
-    header h1 {
-        font-size: 65px;
-    }
-
-    .names h2 {
-        font-size: 60px;
-    }
-
-    .and {
-        font-size: 28px;
-    }
-
-    .date {
-        font-size: 1em;
-    }
-}
-@media (max-width: 768px) {
-
-    .layer-nama {
-        padding: 0 16px;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 52px;
-    }
-
-    .names h2 {
-        font-size: 44px;
-        line-height: 1.15;
-    }
-
-    .and {
-        font-size: 26px;
-        margin: 0;
-    }
-
-    .date {
-        font-size: 0.9em;
-        letter-spacing: 1.5px;
-    }
-
-    footer p {
-        font-size: 16px;
-    }
-
-    .btn-rsvp {
-        font-size: 14px;
-        padding: 8px 16px;
-    }
-
-    .btn-next {
-        position: fixed;
-        bottom: env(safe-area-inset-bottom, 14px);
-        right: env(safe-area-inset-right, 14px);
-        z-index: 20;
-    }
-}
-@media (max-width: 480px) {
-    header h1 {
-        font-size: 46px;
-    }
-
-    .names h2 {
-        font-size: 38px;
-    }
-
-    .and {
-        font-size: 24px;
-    }
-
-    .date {
-        font-size: 0.85em;
-    }
-
-    footer p {
-        font-size: 15px;
     }
 }
