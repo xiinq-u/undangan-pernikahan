@@ -36,17 +36,8 @@ body {
    LAYER UTAMA
 ================================ */
 .layer-nama {
-    position: relative;
-    z-index: 5;
-    min-height: 100vh;
-
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 2.5s ease, transform 1.5s ease;
 }
 
 .layer-nama.muncul {
@@ -58,9 +49,8 @@ body {
    CARD
 ================================ */
 .card {
-    background: transparent;
-    padding: 40px 20px;
     text-align: center;
+    padding: 40px 28px 30px;
 }
 
 /* ================================
@@ -84,7 +74,6 @@ header h1 {
     font-weight: normal;
     color: #520e04;
     margin-bottom: 1rem; /* jarak ke h2 */
-    text-shadow: 1.5px 0.5px 1px rgb(0, 0, 0);
     letter-spacing: 1px;
     animation: swaySoft 6s ease-in-out infinite;
 }
@@ -96,7 +85,6 @@ header h1 {
     font-weight: lighter;
     color: #520e04;
     font-family: 'Great Vibes', cursive;
-    text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
     line-height: 1.1;
     animation: swaySoft 7s ease-in-out infinite;
 }
@@ -106,7 +94,6 @@ header h1 {
     font-size: 3vw;
     display: block;
     color: #74665a;
-    text-shadow: 1.5px 0.1px 1px rgb(0, 0, 0);
     margin: 0.3rem 0; /* jarak ke elemen atas */
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -120,32 +107,61 @@ header h1 {
 
 /* Media query untuk mobile */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 7vw;
-        margin-bottom: 0.5rem;
-         position: absolute;
-        top: -200px;
-        left: 70px;
-    }
-    .names {
-         position: absolute;
-        top: -40px;
-        left: 55px;
-    }
-    .names h2 {
-        font-size: 12vw;
-        margin: 0.3rem 0;
-        
-    }
-    .guest-label {
-         position: absolute;
-        top: 130px;
-        left: 170px;
-    }
-    .and {
-        font-size: 5vw;
-        margin: 0.2rem 0;
-    }
+    /* The Wedding Of */
+header h1 {
+    font-size: 15px;
+    letter-spacing: 1.2px;
+    color: #6b4a2d;
+    margin-bottom: 22px;
+}
+
+/* Nama pengantin */
+.names h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: #5a2f1a;
+    line-height: 1.15;
+}
+
+.names .and {
+    display: block;
+    font-size: 20px;
+    margin: 6px 0;
+    color: #5a2f1a;
+}
+
+/* Kepada Yth */
+.guest-label {
+    margin-top: 22px;
+    font-size: 15px;
+    color: #520e04;
+}
+
+/* Nama tamu */
+.guest-name {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 6px 0 18px;
+    color: #520e04;
+}
+
+/* Button */
+.btn-rsvp {
+    margin: 10px auto 18px;
+    padding: 10px 28px;
+    font-size: 14px;
+    border-radius: 25px;
+    background: #b5743a;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Lokasi */
+footer p {
+    font-size: 13px;
+    color: #6b4a2d;
+}
 }
 
 
@@ -156,10 +172,6 @@ footer p {
     margin-top: 30px;
     font-size: 20px;
     color: #5a1f14; /* coklat tua elegan */
-
-    text-shadow:
-        0 1px 2px rgba(0,0,0,0.55),   /* depth */
-        0 0 6px rgba(90,31,20,0.25); /* glow coklat */
     animation: swaySoft 8s ease-in-out infinite;
     transform-origin: center bottom;
 }
