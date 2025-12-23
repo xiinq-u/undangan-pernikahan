@@ -903,6 +903,33 @@ z-index: 9999;
     margin-bottom: 25px;
 }
 
+/* Input text */
+#guestName {
+    color: white;              /* teks saat diketik */
+    background-color: transparent; /* atau warna gelap */
+}
+
+/* Select */
+#jumlah-tamu {
+    color: white;              /* teks setelah dipilih */
+    background-color: transparent;
+    
+}
+
+/* Option (biar kelihatan saat dropdown dibuka) */
+#jumlah-tamu option {
+    color: black;              /* WAJIB hitam biar kebaca */
+    background-color: white;
+}
+
+/* Saat fokus (diketik / diklik) */
+#guestName:focus,
+#jumlah-tamu:focus {
+    color: white;
+    outline: none;
+}
+
+
 .form-group label {
     font-size: 1em;
     margin-bottom: 6px;

@@ -186,47 +186,38 @@ countdownInterval = setInterval(updateCountdown, 1000);
     /* =====================================================
        6. FORM RSVP (KIRIM KE GOOGLE FORM)
     ===================================================== */
-    const form = document.getElementById('rsvpForm');
-    const responseMessage = document.getElementById('responseMessage');
+  document.getElementById("rsvpForm").addEventListener("submit", function(e) {
+    e.preventDefault();
 
-    const GOOGLE_FORM_ACTION_URL =
-        "https://docs.google.com/forms/d/e/1FAIpQLSctBnIx0PZ2Fj3UNu1x8k7fevvfaP5hpHuc1Xr467r9Tw1zGA/formResponse";
+    const formData = new FormData();
+    formData.append("nama", document.getElementById("guestName").value);
+    formData.append("jumlah", document.getElementById("jumlah-tamu").value);
+    formData.append(
+        "kehadiran",
+        document.querySelector('input[name="attendance"]:checked').value
+    );
 
-    const FIELD_ID_NAMA = "Nama_Lengkap";
-    const FIELD_ID_JUMLAH = "Jumlah_Tamu";
-    const FIELD_ID_HADIR = "Konfirmasi_Hadir";
-
-    if (form) {
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('guestName').value.trim();
-            const count = document.getElementById('jumlah-tamu').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked')?.value || "";
-
-            const data = new FormData();
-            data.append(FIELD_ID_NAMA, name);
-            data.append(FIELD_ID_JUMLAH, count);
-            data.append(FIELD_ID_HADIR, attendance);
-
-            responseMessage.textContent = "Mengirimkan konfirmasi...";
-
-            try {
-                await fetch(GOOGLE_FORM_ACTION_URL, {
-                    method: "POST",
-                    mode: "no-cors",
-                    body: data
-                });
-
-                responseMessage.textContent = "✅ Konfirmasi Kehadiran berhasil dikirim! Terima kasih.";
-                form.reset();
-
-            } catch (error) {
-                responseMessage.textContent = "❌ Terjadi kesalahan. Silakan coba lagi.";
-            }
-        });
-    }
-
+    fetch("https://script.google.com/macros/s/AKfycbzXbaD3vLOaiQTwceo32-2NU5yKFLLDGXYAlaOn8LAsuWszHQkzvLnaywsCyZcKIH9DeA/exec", {
+        method: "POST",
+        body: formData
+    })
+    .then(response => response.text())
+    .then(responseText => {
+        if (responseText.includes("success")) {
+            document.getElementById("responseMessage").innerText =
+                "Terima kasih, konfirmasi Anda telah dikirim ✔";
+            document.getElementById("rsvpForm").reset();
+        } else {
+            document.getElementById("responseMessage").innerText =
+                "Data terkirim, tapi server tidak balas sukses.";
+        }
+    })
+    .catch(error => {
+        console.error("Error submit RSVP:", error);
+        document.getElementById("responseMessage").innerText =
+            "Gagal mengirim data. Silakan coba lagi.";
+    });
+});
 
 
    const envelope = document.getElementById('envelope');
