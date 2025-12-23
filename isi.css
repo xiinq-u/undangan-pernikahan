@@ -903,6 +903,11 @@ z-index: 9999;
     margin-bottom: 25px;
 }
 
+.response-message {
+    margin-top: 50px;
+    color: white;
+}
+
 /* Input text */
 #guestName {
     color: white;              /* teks saat diketik */
