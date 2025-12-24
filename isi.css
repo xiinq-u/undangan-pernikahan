@@ -1449,9 +1449,10 @@ z-index: 9999;
 }
 
 .account-name {
-    font-size: 12px;
+    font-size: 14px;
     color: #7a6f5a;
     margin-bottom: 6px;
+    font-weight: bolder;
 }
 .account-number {
     font-size: 13px;
